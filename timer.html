@@ -38,7 +38,8 @@
             letter-spacing: 2px;
         }
 
-        #celebration {
+        #celebration { 
+            place-content: center;
             display: none;
             position: absolute;
             top: 0;
@@ -84,6 +85,28 @@
             bottom: 0;
             z-index: 10;
         }
+        @media only screen and (max-width: 600px) {
+            #celebration { 
+            place-content: center;
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: #ffffff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #celebration h1 {
+            text-shadow: 10px 10px 10px black;
+            color: #a47864;
+            margin-top: 20px;
+            font-size: 6rem;
+            animation: zoom-in 3s forwards infinite;
+        } 
+        }
     </style>
 </head>
 <body>
@@ -101,7 +124,7 @@
     </div>
 
     <!-- Audio for Countdown -->
-    <audio id="countdown-music" src="countdown-sound.mp3" loop></audio>
+    <audio id="countdown-music" src="background-music-224633.mp3" loop></audio>
     <!-- Audio for Celebration -->
     <audio id="celebration-music" src="fireworks-29629.mp3" loop></audio>
 
@@ -145,13 +168,15 @@
         // Start the countdown music
         function startCountdownMusic() {
             const countdownMusic = document.getElementById('countdown-music');
-            countdownMusic.volume = 0.5; // Adjust volume
+            countdownMusic.volume = 1.0; // Adjust volume
             countdownMusic.play();
         }
 
         // Stop the countdown music
         function stopCountdownMusic() {
             const countdownMusic = document.getElementById('countdown-music');
+            countdownMusic.volume = 0; // Adjust volume
+
             countdownMusic.pause();
             countdownMusic.currentTime = 0;
         }
